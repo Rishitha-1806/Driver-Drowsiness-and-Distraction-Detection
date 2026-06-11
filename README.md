@@ -1,42 +1,96 @@
-# Driver Drowsiness and Distraction Detection
+# Driver Drowsiness and Distraction Detection System
 
-An AI-powered driver monitoring system that detects drowsiness and distracted driving behaviors in real time using Computer Vision, Deep Learning, and Machine Learning techniques. The system provides instant alerts to improve road safety and reduce accident risks.
+## Overview
+
+This project is an AI-powered Driver Monitoring System designed to improve road safety by detecting driver drowsiness and distraction in real time. The system combines Computer Vision, Deep Learning, and Machine Learning techniques to monitor driver behavior and generate alerts whenever unsafe conditions are detected.
+
+The application uses facial landmark detection for eye and mouth analysis, YOLOv8 for mobile phone detection, and real-time audio alerts to warn drivers.
+
+---
 
 ## Features
 
-* Real-time driver drowsiness detection using Eye Aspect Ratio (EAR)
-* Facial landmark detection with Dlib
-* Driver distraction detection using YOLOv8
-* Audio and visual alerts for unsafe driving behavior
-* Real-time webcam monitoring
-* Deep learning-based classification for enhanced accuracy
+### Drowsiness Detection
 
-## Tech Stack
+* Detects eye closure using Eye Aspect Ratio (EAR).
+* Uses Dlib's 68 facial landmark model.
+* Triggers an alert when eyes remain closed for a specified duration.
+
+### Yawn Detection
+
+* Detects yawning by measuring the distance between upper and lower lips.
+* Tracks yawning frequency.
+* Generates alerts when excessive yawning is detected.
+
+### Mobile Phone Usage Detection
+
+* Uses YOLOv8 object detection model.
+* Detects mobile phone usage while driving.
+* Triggers alerts for continuous phone usage.
+
+### No Face Detection
+
+* Uses Haar Cascade face detection.
+* Alerts when the driver's face is not visible.
+
+### Real-Time Alerts
+
+* Audio warning system.
+* Visual alerts displayed on screen.
+* Multi-threaded alarm execution.
+
+---
+
+## Technologies Used
 
 * Python
 * OpenCV
-* TensorFlow
-* Keras
-* YOLOv8
 * Dlib
+* YOLOv8
 * NumPy
-* Docker
+* Imutils
+* Haar Cascade Classifier
+* Multithreading
+* Computer Vision
+* Deep Learning
 
-## Required Model Files
+---
 
-The following model files are not included in this repository due to their large size.
+## Project Structure
 
-### 1. Dlib Facial Landmark Model
+```text
+DriverDrowsinessAndDistraction/
+│
+├── app.py
+├── alarm.wav
+├── haarcascade_frontalface_default.xml
+├── shape_predictor_68_face_landmarks.dat
+├── yolov8n.pt
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Required Files
+
+The following pretrained model files are not included in this repository because of their large size.
+
+### 1. Dlib Facial Landmark Predictor
 
 Download:
 
 http://dlib.net/files/shape_predictor_68_face_landmarks.dat.bz2 or https://www.kaggle.com/datasets/playmakerg/shape-predictor-68-face-landmarksdat?resource=download
 
-Extract the archive and place:
+After extraction, place:
 
+```text
 shape_predictor_68_face_landmarks.dat
+```
 
-in the project root directory.
+inside the project directory.
+
+---
 
 ### 2. YOLOv8 Model
 
@@ -46,54 +100,113 @@ https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt
 
 Place:
 
+```text
 yolov8n.pt
+```
 
-in the project root directory.
+inside the project directory.
+
+---
 
 ## Installation
 
-1. Clone the repository
+### Clone Repository
 
 ```bash
 git clone https://github.com/Rishitha-1806/Driver-Drowsiness-and-Distraction-Detection.git
+
 cd Driver-Drowsiness-and-Distraction-Detection
 ```
 
-2. Install dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Download the required model files and place them in the project directory.
-
-4. Run the application
+### Install Additional Packages
 
 ```bash
-app3.py
+pip install ultralytics
+pip install dlib
+pip install opencv-python
+pip install imutils
+pip install playsound
 ```
 
-## Project Workflow
+---
 
-1. Webcam captures driver's face in real time.
-2. Facial landmarks are detected using Dlib.
-3. Eye Aspect Ratio (EAR) is calculated to identify drowsiness.
-4. YOLOv8 detects distraction activities such as mobile phone usage.
-5. The system generates instant alerts when unsafe conditions are detected.
+## Running the Project
+
+```bash
+python app.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
+```
+
+Example:
+
+```bash
+python app.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
+```
+
+---
+
+## Detection Workflow
+
+1. Webcam captures live video stream.
+2. Haar Cascade detects face presence.
+3. Dlib identifies 68 facial landmarks.
+4. Eye Aspect Ratio (EAR) is calculated.
+5. Drowsiness is detected when EAR falls below threshold.
+6. Mouth landmarks are analyzed for yawning detection.
+7. YOLOv8 detects mobile phone usage.
+8. Audio and visual alerts are triggered when unsafe behavior is identified.
+
+---
+
+## Alert Conditions
+
+| Event            | Detection Method            |
+| ---------------- | --------------------------- |
+| Drowsiness       | Eye Aspect Ratio (EAR)      |
+| Yawning          | Lip Distance Analysis       |
+| Mobile Usage     | YOLOv8 Object Detection     |
+| No Face Detected | Haar Cascade Face Detection |
+
+---
 
 ## Future Enhancements
 
-* Head pose estimation
-* Seatbelt detection
-* Driver identification
-* Cloud-based monitoring dashboard
-* Edge deployment for embedded systems
+* Head Pose Estimation
+* Seatbelt Detection
+* Driver Identity Verification
+* Cloud Dashboard Monitoring
+* Edge Device Deployment
+* Fatigue Prediction Analytics
+
+---
+
+## Applications
+
+* Smart Vehicles
+* Driver Safety Systems
+* Fleet Monitoring
+* Transportation Industry
+* Advanced Driver Assistance Systems (ADAS)
+
+---
 
 ## Author
 
-Merugumala Rishitha
+**Merugumala Rishitha**
 
-B.Tech Computer Science and Engineering
+B.Tech - Computer Science and Engineering
 
 TKR College of Engineering and Technology
+
+Hyderabad, India
+
+---
+
+
+
 

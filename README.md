@@ -70,7 +70,7 @@ pip install -r requirements.txt
 4. Run the application
 
 ```bash
-python main.py
+app3.py
 ```
 
 ## Project Workflow

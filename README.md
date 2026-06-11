@@ -194,6 +194,42 @@ python app.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm al
 * Advanced Driver Assistance Systems (ADAS)
 
 ---
+## How to Run the Project
+
+### Step 1: Activate Virtual Environment
+
+```bash
+activate major1
+```
+
+### Step 2: Navigate to Project Directory
+
+```bash
+cd C:\Users\MERUGUMALA RISHITHA\OneDrive\Desktop\major\DriverDrowsinessAndDistraction
+```
+
+### Step 3: Run the Application
+
+```bash
+python app3.py --shape-predictor shape_predictor_68_face_landmarks.dat --alarm alarm.wav
+```
+
+### Command Explanation
+
+* `app3.py` → Main application file.
+* `--shape-predictor` → Path to the Dlib facial landmark model.
+* `shape_predictor_68_face_landmarks.dat` → Facial landmark predictor file used for eye and mouth detection.
+* `--alarm alarm.wav` → Audio alert played when drowsiness, yawning, mobile usage, or no-face conditions are detected.
+
+### Exit the Application
+
+Press:
+
+```text
+q
+```
+
+to stop the video stream and close the application.
 
 ## Author
 
